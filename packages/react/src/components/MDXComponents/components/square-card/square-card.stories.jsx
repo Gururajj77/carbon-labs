@@ -6,7 +6,8 @@
  */
 
 import React from 'react';
-import { Grid } from '@carbon/react';
+import { Row } from '@carbon/react';
+import { Tools } from '@carbon/react/icons';
 
 import { SquareCard } from './square-card';
 
@@ -26,18 +27,49 @@ const stories = {
 export default stories;
 
 const Template = (args) => (
-  <div className="square-card-group">
-    <Grid>
-      <SquareCard
-        title="Download Resources"
-        bodyText="Templates and assets"
-        href="/downloads"
-        actionIcon="download"
-        {...args}
-      />
-    </Grid>
-  </div>
+  <>
+    <SquareCard
+      title="A small sentence can go here in conjunction with a pictogram"
+      href="/"
+      {...args}>
+      <Tools size={32} />
+    </SquareCard>
+    <SquareCard
+      title="A small sentence can go here with no pictogram"
+      helperText="(Optional text)"
+      href="/"
+      {...args}
+    />
+    <SquareCard
+      title="Short title"
+      smallTitle
+      bodyText="A short body paragraph describing the card could go here."
+      href="/"
+      {...args}
+    />
+  </>
 );
 
 export const Default = Template.bind({});
 Default.args = {};
+
+export const DarkMode = Template.bind({});
+DarkMode.args = {
+  color: 'dark',
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  disabled: true,
+};
+
+export const WithDownloadIcon = () => (
+  <Row className="square-card-group">
+    <SquareCard
+      title="Download Resources"
+      bodyText="Templates and assets"
+      href="/downloads"
+      actionIcon="download"
+    />
+  </Row>
+);
